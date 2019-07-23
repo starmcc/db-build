@@ -1,4 +1,3 @@
-package com.starmcc.build;
 
 /**
  * 自动构建配置

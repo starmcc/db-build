@@ -1,13 +1,9 @@
-package com.starmcc.build;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * 自动构建工具
@@ -46,6 +42,17 @@ public class QmDbBuildClient {
             connection.setAutoCommit(false);
             //STEP 4: Execute a query
             stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT COUNT(0) FROM information_schema.schemata WHERE schema_name = '" + baseName + "'");
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                if (count > 0) {
+                    LOG.info("数据库已存在,跳出创建数据库方法...");
+                    return;
+                }
+            } else {
+                throw new Exception();
+            }
+
             String createDataBaseSql =
                     "CREATE DATABASE " + baseName
                             + " DEFAULT CHARACTER SET " + config.getDefaultCharacter()

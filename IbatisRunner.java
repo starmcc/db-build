@@ -1,9 +1,5 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
 
-package com.starmcc.build;
+
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -295,7 +291,6 @@ public class IbatisRunner {
                             var9.addSuppressed(var8);
                         }
                     }
-
                     throw var9;
                 }
 

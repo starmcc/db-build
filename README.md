@@ -49,7 +49,7 @@ build.buildSqlFile(true,"build/test_db.sql");
 
 ### buildDataBase
 
-构建数据库，自动从`url`连接当中获取数据库名和数据库连接地址，并进行创建操作。
+构建数据库，自动从`url`连接当中获取数据库名和数据库连接地址，并进行创建操作，当数据库存在时，不执行创建操作。
 
 ### buildSqlFile
 
